@@ -9,7 +9,7 @@ import { CommonVariablesService } from './common-variables.service';
   providedIn: 'root',
 })
 export class UserService {
-  DB_URL = 'http://localhost:3002/users';
+  DB_URL = 'http://localhost:3000/users';
   private loggedIn = false;
   private userType = 'none';
   constructor(
@@ -60,6 +60,7 @@ export class UserService {
       id: '',
       userType: 'none',
       profilePicture: '',
+      profileBackground: '',
       userName: '',
       email: '',
       gender: '',
@@ -82,6 +83,7 @@ export class UserService {
     id: '',
     userType: 'none',
     profilePicture: '',
+    profileBackground: '',
     userName: '',
     email: '',
     gender: '',
@@ -135,6 +137,13 @@ export class UserService {
     );
   }
 
+  ChangeUserProfilePicture(id: string, img: string | ArrayBuffer | null){
+    return this.myHttp.patch(this.DB_URL + '/' + id, {profilePicture: img})
+  }
+
+  ChangeUserProfileBackground(id: string, img: string | ArrayBuffer | null){
+    return this.myHttp.patch(this.DB_URL + '/' + id, {profileBackground: img})
+  }
   DeleteUserById(id: string, password: string | null): Observable<any> {
     return this.VerifyPassword(id, password).pipe(
       switchMap((isVerified) => {
