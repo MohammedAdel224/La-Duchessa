@@ -21,6 +21,7 @@ export class OrdersHistoryComponent {
     id: '',
     userType: 'none',
     profilePicture: '',
+    profileBackground: '',
     userName: '',
     email: '',
     gender: '',

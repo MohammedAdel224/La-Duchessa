@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
     id: '',
     userType: 'none',
     profilePicture: '',
+    profileBackground: '',
     userName: '',
     email: '',
     gender: '',

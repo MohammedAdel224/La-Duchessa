@@ -15,7 +15,7 @@ export class OrderService {
     private userService: UserService
   ) {}
 
-  DB_URL = 'http://localhost:3003/orders';
+  DB_URL = 'http://localhost:3000/orders';
 
   GetAllOrders():Observable<Order[]>{
     return this.Http.get<Order[]>(this.DB_URL);

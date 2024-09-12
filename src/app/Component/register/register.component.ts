@@ -158,6 +158,7 @@ export class RegisterComponent {
         address: this.address,
         password: this.registerForm.controls.password.value,
         profilePicture: this.profilePicture,
+        profileBackground: '',
         cart: [],
         order: [],
       };
