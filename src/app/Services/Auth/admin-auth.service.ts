@@ -11,7 +11,7 @@ export class AdminAuthService implements CanActivate{
 
   canActivate(): boolean {
     if(this.UService.IsAuthenticated() && this.UService.UserType == "admin") return true;
-    this.router.navigate(["/error"]);
+    this.router.navigate(["/login"]);
     return false;
   }
 }

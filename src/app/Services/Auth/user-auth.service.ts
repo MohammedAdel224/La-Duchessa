@@ -11,7 +11,7 @@ export class UserAuthService implements CanActivate {
 
   canActivate(): boolean {
     if(this.UService.IsAuthenticated() && this.UService.UserType == "user") return true;
-    this.router.navigate(["/error"]);
+    this.router.navigate(["/login"]);
     return false;
   }
 }
