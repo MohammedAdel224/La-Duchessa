@@ -1,4 +1,27 @@
 <div class="main">
+  <header>
+    <div class="cover d-flex align-items-end flex-row-reverse pe-3 pb-2" [ngStyle]="{'background-image': 'url('+user.profileBackground +')'}">
+      <label class="btn btn-light" for="profileBackground"><i class="fa-solid fa-camera"></i><span class="d-none d-sm-inline"> Change Cover</span></label>
+      <form [formGroup]="profileBackgroundForm" class="mb-3">
+        <input id="profileBackground" formControlName="profileBackground" accept="image/jpeg" type="file" (change)="onProfileBackgroundSelected($event)"/>
+      </form>
+    </div>
+    <div class="userinfo text-center">
+      <div class="dropdown">
+        <img [src]="user.profilePicture" alt="Profile Image">
+        <label for="profilePicture" data-bs-toggle="dropdown"><i class="fa-solid fa-camera fa-xl rounded-circle d-inline-block"></i></label>
+        <span class="h1 d-block d-sm-inline"> {{user.userName}}</span>
+        <ul class="dropdown-menu">
+          <li><label for="profilePicture" class="dropdown-item">Change</label></li>
+          <li><button class="dropdown-item" (click)="removeProfilePicture()">Remove</button></li>
+        </ul>
+        <form [formGroup]="profileImageForm">
+          <input id="profilePicture" formControlName="profilePicture" accept="image/jpeg" type="file" (change)="onProfilePictureSelected($event)"/>
+        </form>
+      </div>
+    </div>
+    <hr class="container"/>
+  </header>
     <div class="container">
         <div class="row">
             <app-edit-profile class="col-md-6"></app-edit-profile>

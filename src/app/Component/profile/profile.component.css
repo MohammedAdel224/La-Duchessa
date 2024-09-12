@@ -1,0 +1,36 @@
+.cover{
+  height: 50vh;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  border-bottom: 5px solid var(--color-9);
+}
+
+.cover button{
+  bottom: 0;
+  right: 0;
+}
+
+.userinfo img{
+  border: 5px solid var(--color-9);
+  border-radius: 50%;
+  margin-top: -12.5vh;
+  width: 25vh;
+  height: 25vh;
+}
+
+.userinfo i{
+    background-color: var(--color-9);
+    color: var(--color-1);
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 1.5;
+    margin-left: -35px;
+    cursor: pointer;
+}
+
+form, input[type="file"]{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
