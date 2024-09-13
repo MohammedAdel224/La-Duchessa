@@ -15,7 +15,6 @@ import { OrdersComponent } from './Component/orders/orders.component';
 import { PrivacyPolicyComponent } from './Component/privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './Component/terms-of-service/terms-of-service.component';
 import { QAndAComponent } from './Component/q-and-a/q-and-a.component';
-import { OrderrComponent } from './Component/orderr/orderr.component';
 import { AdminProductsComponent } from './Component/product-admin/product-admin.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +25,6 @@ export const routes: Routes = [
     canActivate: [UserAuthService],
   },
   { path: 'detail/:id', component: DetailsComponent },
-  { path: 'orderr', component: OrderrComponent },
   {
     path: 'admin-products',
     component: AdminProductsComponent,
