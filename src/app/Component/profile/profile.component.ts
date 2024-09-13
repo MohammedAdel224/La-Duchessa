@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit{
     });
   }
 
-  onProfilePictureSelected(event: Event): void {
+  onFileSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];
 
     if (file) {
@@ -43,22 +43,6 @@ export class ProfileComponent implements OnInit{
       reader.onload = () => {
         this.user.profilePicture = reader.result;
         this.userService.ChangeUserProfilePicture(this.user.id, this.user.profilePicture).subscribe();
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error('File Error');
-    }
-  }
-
-  onProfileBackgroundSelected(event: Event): void {
-    const file = (event.target as HTMLInputElement)?.files?.[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        this.user.profileBackground = reader.result;
-        this.userService.ChangeUserProfileBackground(this.user.id, this.user.profileBackground).subscribe();
       };
       reader.readAsDataURL(file);
     } else {
@@ -86,8 +70,5 @@ export class ProfileComponent implements OnInit{
 
   profileImageForm = new FormGroup({
     profilePicture: new FormControl('')
-  });
-  profileBackgroundForm = new FormGroup({
-    profileBackground: new FormControl('')
   });
 }

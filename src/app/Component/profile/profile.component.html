@@ -1,13 +1,6 @@
 <div class="main">
   <header>
-    <div class="cover" [ngStyle]="{'background-image': 'url('+user.profileBackground +')'}">
-      <div class="container d-flex align-items-end flex-row-reverse h-100 pb-2">
-        <label class="btn btn-light" for="profileBackground"><i class="fa-solid fa-camera"></i><span class="d-none d-sm-inline"> Change Cover</span></label>
-        <form [formGroup]="profileBackgroundForm" class="mb-3">
-          <input id="profileBackground" formControlName="profileBackground" accept="image/jpeg" type="file" (change)="onProfileBackgroundSelected($event)"/>
-        </form>
-      </div>
-    </div>
+    <div class="cover"></div>
     <div class="userinfo text-center">
       <div class="dropdown">
         <img [src]="user.profilePicture" alt="Profile Image">
@@ -18,7 +11,7 @@
           <li><button class="dropdown-item" (click)="removeProfilePicture()">Remove</button></li>
         </ul>
         <form [formGroup]="profileImageForm">
-          <input id="profilePicture" formControlName="profilePicture" accept="image/jpeg" type="file" (change)="onProfilePictureSelected($event)"/>
+          <input id="profilePicture" formControlName="profilePicture" accept="image/jpeg" type="file" (change)="onFileSelected($event)"/>
         </form>
       </div>
     </div>
