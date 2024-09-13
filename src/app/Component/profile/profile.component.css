@@ -34,3 +34,10 @@ form, input[type="file"]{
   height: 0;
   overflow: hidden;
 }
+
+.nav-tabs{
+  background-color: white;
+  position: sticky;
+  top: 3.6rem;
+  z-index: 100;
+}
