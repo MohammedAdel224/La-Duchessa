@@ -1,19 +1,11 @@
-<div class="main alert text-center mt-3">
-  <form [formGroup]="userForm">
-    <div class="dropdown dropend">
-      <img class="img mt-3" [src]="tempProfilePicture" width="144" height="144" data-bs-toggle="dropdown"/>
-      <ul class="dropdown-menu">
-        <li><label for="profilePicture" class="dropdown-item">Change</label></li>
-        <li><button class="dropdown-item" (click)="removeProfilePicture()">Remove</button></li>
-      </ul>
-      <input formControlName="profilePicture" accept="image/jpeg" type="file" id="profilePicture" (change)="onFileSelected($event)"/>
-    </div>
-    <div class="input-group mt-3">
-      <span class="input-group-text col-6">User Name</span>
+<div class="main text-center mt-3 mb-3 row">
+  <form [formGroup]="userForm" class="col-md-6 offset-md-3">
+    <div class="input-group mt-3" id="test">
+      <span class="input-group-text col-6 d-none d-sm-flex">User Name</span>
       <input type="text" class="form-control" value="{{user.userName}}" readonly>
     </div>
     <div class="input-group mt-3">
-      <span class="input-group-text col-6">Email</span>
+      <span class="input-group-text col-6 d-none d-sm-flex">Email</span>
       <input formControlName="email" type="email" class="form-control" required/>
       @if(emailIsNotValid)
       {
@@ -25,8 +17,8 @@
       <div class="text-danger text-start">Invalid Email!!</div>
     }
     <div class="input-group mt-3">
-      <span class="input-group-text col-6">Old Password</span>
-      <input formControlName="password" type="password" class="form-control"/>
+      <span class="input-group-text col-6 d-none d-sm-flex">Old Password</span>
+      <input id="password" formControlName="password" type="password" class="form-control"/>
       @if(userForm.controls["password"].value == "")
       {
         <span class="input-group-text col-1"><i class="fa-solid fa-triangle-exclamation"></i></span>
@@ -37,11 +29,11 @@
       <div class="text-danger text-start">Enter The Password!!</div>
     }
     <div class="input-group mt-3">
-      <span class="input-group-text col-6">New Password</span>
+      <span class="input-group-text col-6 d-none d-sm-flex">New Password</span>
       <input formControlName="newPassword" type="password" class="form-control"/>
     </div>
     <div class="input-group mt-3">
-      <span class="input-group-text col-6">Confirm New Password</span>
+      <span class="input-group-text col-6 d-none d-sm-flex">Confirm New Password</span>
       <input formControlName="confirmNewPassword" type="password" class="form-control"/>
       @if(confermNewPasswordDoesNotMatchNewPassword)
       {
@@ -53,7 +45,7 @@
       <div class="text-danger text-start">Does not match the new password!!</div>
     }
     <div class="input-group mt-3">
-      <span class="input-group-text col-6">Gender</span>
+      <span class="input-group-text col-6 d-none d-sm-flex">Gender</span>
       <select formControlName="gender" class="form-select">
         @for(g of genders; track g)
         {
@@ -62,7 +54,7 @@
       </select>
     </div>
     <div class="input-group mt-3">
-      <span class="input-group-text col-6" id="basic-addon1">Address</span>
+      <span class="input-group-text col-6 d-none d-sm-flex" id="basic-addon1">Address</span>
       <input formControlName="address" type="text" class="form-control" required>
     </div>
     <div class="btns mt-3">

@@ -56,8 +56,6 @@ export class EditProfileComponent implements OnInit {
     deleteSign: new FormControl(''),
     deletePassword: new FormControl(''),
   });
-  tempProfilePicture: string | ArrayBuffer | null =
-    'Images/profile-picture.jpg';
 
   ngOnInit() {
     this.commonVariables.user$.subscribe((user: User) => {
@@ -69,27 +67,9 @@ export class EditProfileComponent implements OnInit {
       );
       this.userForm.setControl('gender', new FormControl(this.user.gender));
       this.userForm.setControl('address', new FormControl(this.user.address));
-      this.tempProfilePicture = this.user.profilePicture;
     });
   }
 
-  onFileSelected(event: Event): void {
-    const file = (event.target as HTMLInputElement)?.files?.[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        this.tempProfilePicture = reader.result;
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error('File Error');
-    }
-  }
-  removeProfilePicture() {
-    this.tempProfilePicture = 'Images/profile-picture.jpg';
-  }
 
   get emailIsNotValid() {
     return !this.userForm.controls['email'].valid;
@@ -108,7 +88,6 @@ export class EditProfileComponent implements OnInit {
       !this.confermNewPasswordDoesNotMatchNewPassword
     ) {
       let update: any = {
-        profilePicture: this.tempProfilePicture,
         email: this.userForm.controls['email'].value,
         gender: this.userForm.controls['gender'].value,
         address: this.userForm.controls['address'].value,
@@ -125,8 +104,7 @@ export class EditProfileComponent implements OnInit {
             setTimeout(() => {
               this.saveDone = null;
             }, 5000);
-            (this.user.profilePicture = this.tempProfilePicture),
-              (this.user.email = this.userForm.controls['email'].value);
+            this.user.email = this.userForm.controls['email'].value;
             this.user.gender = this.userForm.controls['gender'].value;
             this.user.address = this.userForm.controls['address'].value;
           }
@@ -146,6 +124,5 @@ export class EditProfileComponent implements OnInit {
       gender: this.user.gender,
       address: this.user.address,
     });
-    this.tempProfilePicture = this.user.profilePicture;
   }
 }
