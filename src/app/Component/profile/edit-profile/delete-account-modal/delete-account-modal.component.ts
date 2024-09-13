@@ -18,6 +18,7 @@ declare var bootstrap: any;
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './delete-account-modal.component.html',
+  styleUrl: './delete-account-modal.component.css'
 })
 export class DeleteAccountModalComponent implements OnInit {
   constructor(
