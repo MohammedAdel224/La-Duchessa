@@ -1,3 +1,5 @@
+import { Order, OrderProduct } from "./order.model";
+
 export interface User {
   id: string;
   userType: string;
@@ -7,6 +9,6 @@ export interface User {
   password?: string | null;
   gender: string | null;
   address: string | null;
-  cart: any[];
-  order: any[];
+  cart: OrderProduct[];
+  order: Order[];
 }
