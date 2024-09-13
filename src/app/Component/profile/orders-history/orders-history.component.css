@@ -9,4 +9,3 @@
 .order span{ font-weight: bold;}
 .order:hover{background-color: var(--color-1);}
 .order-header:hover{cursor: pointer;}
-.h1{font-size: calc(2.375rem + 1.5vw)}

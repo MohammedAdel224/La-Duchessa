@@ -1,9 +1,8 @@
-<div class="main alert align-items-stretch">
-    <h3>History</h3>
+<div class="main align-items-stretch">
     <div id="orders" class="orders list-group">
       @if(orders.length === 0)
       {
-        <div>Orders list is empty</div>
+        <p class="h1">Orders list is empty</p>
       }
       @for(order of orders; track order.id)
       {
