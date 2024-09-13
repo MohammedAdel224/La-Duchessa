@@ -59,7 +59,6 @@ export class ProfileComponent implements OnInit{
     id: '',
     userType: 'none',
     profilePicture: '',
-    profileBackground: '',
     userName: '',
     email: '',
     gender: '',

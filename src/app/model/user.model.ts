@@ -2,7 +2,6 @@ export interface User {
   id: string;
   userType: string;
   profilePicture: string | ArrayBuffer | null;
-  profileBackground: string | ArrayBuffer | null;
   userName: string | null;
   email: string | null;
   password?: string | null;

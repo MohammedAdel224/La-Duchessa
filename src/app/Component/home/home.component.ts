@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
     id: '',
     userType: 'none',
     profilePicture: '',
-    profileBackground: '',
     userName: '',
     email: '',
     gender: '',

@@ -12,6 +12,17 @@ export class UserService {
   DB_URL = 'http://localhost:3000/users';
   private loggedIn = false;
   private userType = 'none';
+  initUser: User= {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+    order: [],
+  };
   constructor(
     private myHttp: HttpClient,
     private commonVariables: CommonVariablesService
@@ -56,18 +67,7 @@ export class UserService {
 
   Signout() {
     this.loggedIn = false;
-    this.commonVariables.setUser({
-      id: '',
-      userType: 'none',
-      profilePicture: '',
-      profileBackground: '',
-      userName: '',
-      email: '',
-      gender: '',
-      address: '',
-      cart: [],
-      order: [],
-    });
+    this.commonVariables.setUser(this.initUser);
     this.userType = 'none';
   }
 
@@ -79,18 +79,7 @@ export class UserService {
     return this.userType;
   }
 
-  private sendUser = new BehaviorSubject<User>({
-    id: '',
-    userType: 'none',
-    profilePicture: '',
-    profileBackground: '',
-    userName: '',
-    email: '',
-    gender: '',
-    address: '',
-    cart: [],
-    order: [],
-  });
+  private sendUser = new BehaviorSubject<User>(this.initUser);
   sendUser$ = this.sendUser.asObservable();
   GetUserByIdWithPassword(
     id: string,
