@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 import { CartService } from '../../Services/cart.service';
+import { Product } from '../../model/product.model';
+import { OrderProduct } from '../../model/order.model';
 
 @Component({
   selector: 'app-home',
@@ -64,10 +66,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addToCart(event: Event, product: any) {
-    event.stopPropagation();
-    this.user.cart.push(product);
-    this.cartService.updatecart(this.user.id, { cart: this.user.cart });
+  addToCart(product: Product) {
+    var cartProduct = this.user.cart.filter((orderProduct: OrderProduct)=> orderProduct.id == product.id);
+    if(cartProduct.length !== 0){
+      cartProduct[0].quantity += 1;
+    }
+    else{
+      this.user.cart.push({id: product.id, name: product.name, price: product.price, quantity: 1});
+    }
+    this.cartService.updateCart(this.user.id, {cart: this.user.cart});
   }
 
   detail(id: string) {

@@ -8,6 +8,7 @@ import { User } from '../../model/user.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderProduct } from '../../model/order.model';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,17 @@ import { HttpClientModule } from '@angular/common/http';
 export class DetailsComponent implements OnInit {
   product: Product | any;
 
-  user: User | undefined;
+  user: User = {
+    id: '',
+    userType: 'none',
+    profilePicture: '',
+    userName: '',
+    email: '',
+    gender: '',
+    address: '',
+    cart: [],
+    order: [],
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -43,13 +54,15 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  addToCart(product: Product): void {
-    if (this.user) {
-      this.user.cart.push(product);
-      this.cartService.updatecart(this.user.id, { cart: this.user.cart });
-    } else {
-      console.warn('User not logged in');
+  addToCart(product: Product) {
+    var cartProduct = this.user.cart.filter((orderProduct: OrderProduct)=> orderProduct.id == product.id);
+    if(cartProduct.length !== 0){
+      cartProduct[0].quantity += 1;
     }
+    else{
+      this.user.cart.push({id: product.id, name: product.name, price: product.price, quantity: 1});
+    }
+    this.cartService.updateCart(this.user.id, {cart: this.user.cart});
   }
 
   goBack(): void {

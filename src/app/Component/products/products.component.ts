@@ -8,6 +8,7 @@ import { CartService } from '../../Services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
+import { Order, OrderProduct } from '../../model/order.model';
 
 @Component({
   selector: 'app-products',
@@ -22,7 +23,6 @@ export class ProductsComponent implements OnInit {
   Products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string = '';
-  userid: string | null = null;
   user: User = {
     id: '',
     userType: 'none',
@@ -88,24 +88,14 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    if (this.user.id) {
-      // Add the product to the user's cart
-      this.user.cart.push(product);
-
-      // Update the cart on the server
-      this.cartService
-        .updateCart(this.user.id, { cart: this.user.cart })
-        .subscribe({
-          next: (response) => {
-            console.log('Cart updated successfully:', response);
-          },
-          error: (error) => {
-            console.error('Error updating cart:', error);
-          },
-        });
-    } else {
-      console.error('No user ID found.');
+    var cartProduct = this.user.cart.filter((orderProduct: OrderProduct)=> orderProduct.id == product.id);
+    if(cartProduct.length !== 0){
+      cartProduct[0].quantity += 1;
     }
+    else{
+      this.user.cart.push({id: product.id, name: product.name, price: product.price, quantity: 1});
+    }
+    this.cartService.updateCart(this.user.id, {cart: this.user.cart});
   }
 
   viewCart() {
