@@ -12,16 +12,16 @@
 
 <ul *ngIf="user.cart.length > 0" class="cart-items-list">
   <li *ngFor="let item of user.cart" class="cart-item">
-    <img [src]="item.image" alt="{{ item.title }}" class="cart-item-image" />
+    <!-- <img [src]="item.image" alt="{{ item.title }}" class="cart-item-image" /> -->
     <div class="cart-item-details">
-      <h3 class="cart-item-title">{{ item.title }}</h3>
-      <p class="cart-item-description">{{ item.details }}</p>
+      <h3 class="cart-item-title">{{ item.name }}</h3>
+      <p class="cart-item-description">{{ item.quantity }}</p>
       <p class="cart-item-price">{{ item.price | currency }}</p>
 
       <div class="cart-item-actions">
-        <button (click)="deletefromcart(item)" class="btn btn-danger">
+        <!-- <button (click)="deletefromcart(item)" class="btn btn-danger">
           Delete
-        </button>
+        </button> -->
         <button (click)="makeorder(item)" class="btn btn-success">
           Make Order
         </button>
@@ -30,6 +30,6 @@
   </li>
 </ul>
 
-<button (click)="addorder()" class="btn btn-primary order-all-button">
+<!-- <button (click)="addorder()" class="btn btn-primary order-all-button">
   Order All Cart
-</button>
+</button> -->

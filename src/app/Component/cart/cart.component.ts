@@ -143,80 +143,80 @@ export class CartComponent implements OnInit {
         });
     }
   }
-  addorder() {
-    if (this.user.id) {
-      // Add the product to the user's cart
-      this.user.order.push(this.user.cart);
-      // Update the cart on the server
-      this.cartService
-        .updateCart(this.user.id, { cart: this.user.cart })
-        .subscribe({
-          next: (response: any) => {
-            console.log('Cart updated successfully:', response);
-          },
-        });
-    }
+  // addorder() {
+  //   if (this.user.id) {
+  //     // Add the product to the user's cart
+  //     this.user.order.push(this.user.cart);
+  //     // Update the cart on the server
+  //     this.cartService
+  //       .updateCart(this.user.id, { cart: this.user.cart })
+  //       .subscribe({
+  //         next: (response: any) => {
+  //           console.log('Cart updated successfully:', response);
+  //         },
+  //       });
+  //   }
 
-    if (this.user.id && this.user.cart.length > 0) {
-      // Calculate total
-      const total = this.user.cart.reduce(
-        (acc, product) => acc + (product.price || 0),
-        0
-      );
+  //   if (this.user.id && this.user.cart.length > 0) {
+  //     // Calculate total
+  //     const total = this.user.cart.reduce(
+  //       (acc, product) => acc + (product.price || 0),
+  //       0
+  //     );
 
-      // Create order object
-      const order: Order = {
-        id: this.generateOrderId(), // Generate a unique order ID
-        userId: this.user.id,
-        datetime: new Date().toISOString(), // Current date and time
-        products: this.user.cart,
-        total: total,
-        status: 'Pending', // Default status
-      };
+  //     // Create order object
+  //     const order: Order = {
+  //       id: this.generateOrderId(), // Generate a unique order ID
+  //       userId: this.user.id,
+  //       datetime: new Date().toISOString(), // Current date and time
+  //       products: this.user.cart,
+  //       total: total,
+  //       status: 'Pending', // Default status
+  //     };
 
-      // Create the order in the backend
-      this.orderrservice.createOrder(order).subscribe({
-        next: () => {
-          console.log('Order added successfully');
+  //     // Create the order in the backend
+  //     this.orderrservice.createOrder(order).subscribe({
+  //       next: () => {
+  //         console.log('Order added successfully');
 
-          // Clear the cart
-          this.user.cart = [];
-          this.cartService
-            .updatecart(this.user.id, { cart: this.user.cart })
-            .subscribe({
-              next: () => console.log('Cart cleared successfully'),
-              error: (error) => console.error('Error clearing cart:', error),
-            });
-        },
-        error: (error) => {
-          console.error('Error adding order:', error);
-        },
-      });
-    } else {
-      console.error('User ID not found or cart is empty.');
-    }
-  }
+  //         // Clear the cart
+  //         this.user.cart = [];
+  //         this.cartService
+  //           .updatecart(this.user.id, { cart: this.user.cart })
+  //           .subscribe({
+  //             next: () => console.log('Cart cleared successfully'),
+  //             error: (error) => console.error('Error clearing cart:', error),
+  //           });
+  //       },
+  //       error: (error) => {
+  //         console.error('Error adding order:', error);
+  //       },
+  //     });
+  //   } else {
+  //     console.error('User ID not found or cart is empty.');
+  //   }
+  // }
 
   generateOrderId(): string {
     // Generate a unique order ID
     return 'order-' + Math.random().toString(36).substr(2, 9);
   }
 
-  deletefromcart(product: Product) {
-    const productIndex = this.user.cart.findIndex((p) => p.id === product.id);
-    if (productIndex !== -1) {
-      this.user.cart.splice(productIndex, 1);
-      this.cartService
-        .updatecart(this.user.id, { cart: this.user.cart })
-        .subscribe({
-          next: () => console.log('Product removed from cart'),
-          error: (error) =>
-            console.error('Error removing product from cart:', error),
-        });
-    } else {
-      console.warn('Product not found in cart');
-    }
-  }
+  // deletefromcart(product: Product) {
+  //   const productIndex = this.user.cart.findIndex((p) => p.id === product.id);
+  //   if (productIndex !== -1) {
+  //     this.user.cart.splice(productIndex, 1);
+  //     this.cartService
+  //       .updatecart(this.user.id, { cart: this.user.cart })
+  //       .subscribe({
+  //         next: () => console.log('Product removed from cart'),
+  //         error: (error) =>
+  //           console.error('Error removing product from cart:', error),
+  //       });
+  //   } else {
+  //     console.warn('Product not found in cart');
+  //   }
+  // }
 
   vieworders() {
     this.router.navigate(['/orderr']);
