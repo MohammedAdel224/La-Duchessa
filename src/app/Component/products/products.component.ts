@@ -3,12 +3,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../Services/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Product } from '../../model/product.model'; // Adjust path accordingly
+import { OrderProduct, Product } from '../../model/product.model'; // Adjust path accordingly
 import { CartService } from '../../Services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
-import { Order, OrderProduct } from '../../model/order.model';
 
 @Component({
   selector: 'app-products',
@@ -95,7 +94,7 @@ export class ProductsComponent implements OnInit {
     else{
       this.user.cart.push({id: product.id, name: product.name, price: product.price, quantity: 1});
     }
-    this.cartService.updateCart(this.user.id, {cart: this.user.cart});
+    this.cartService.updateCart(this.user.id, {cart: this.user.cart}).subscribe();
   }
 
   viewCart() {

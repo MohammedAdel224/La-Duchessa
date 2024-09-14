@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { CommonVariablesService } from '../../Services/common-variables.service';
 import { CartService } from '../../Services/cart.service';
-import { Product } from '../../model/product.model';
-import { OrderProduct } from '../../model/order.model';
+import { OrderProduct, Product } from '../../model/product.model';
 
 @Component({
   selector: 'app-home',

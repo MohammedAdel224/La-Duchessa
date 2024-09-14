@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../model/product.model';
+import { OrderProduct, Product } from '../../model/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../Services/product.service';
 import { CartService } from '../../Services/cart.service';
@@ -8,7 +8,6 @@ import { User } from '../../model/user.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { OrderProduct } from '../../model/order.model';
 
 @Component({
   selector: 'app-details',

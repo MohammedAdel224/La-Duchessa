@@ -1,3 +1,5 @@
+import { OrderProduct } from "./product.model";
+
 export interface Order {
   id: string;
   userId: string;
@@ -5,11 +7,4 @@ export interface Order {
   products: OrderProduct[];
   total: number;
   status: string;
-}
-
-export interface OrderProduct {
-  id: string | null;
-  name: string | null;
-  price: number | null;
-  quantity: number;
 }

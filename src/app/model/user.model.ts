@@ -1,4 +1,5 @@
-import { Order, OrderProduct } from "./order.model";
+import { Order } from "./order.model";
+import { OrderProduct } from "./product.model";
 
 export interface User {
   id: string;

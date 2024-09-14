@@ -7,3 +7,18 @@ export interface Product {
   price: number | null;
   image: string | ArrayBuffer | null;
 }
+
+export interface OrderProduct {
+  id: string | null;
+  name: string | null;
+  price: number | null;
+  quantity: number;
+}
+
+export interface CartProduct {
+  id: string | null;
+  name: string | null;
+  price: number | null;
+  quantity: number;
+  image: string | ArrayBuffer | null;
+}
