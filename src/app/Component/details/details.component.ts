@@ -61,7 +61,7 @@ export class DetailsComponent implements OnInit {
     else{
       this.user.cart.push({id: product.id, name: product.name, price: product.price, quantity: 1});
     }
-    this.cartService.updateCart(this.user.id, {cart: this.user.cart});
+    this.cartService.updateCart(this.user.id, {cart: this.user.cart}).subscribe();
   }
 
   goBack(): void {
