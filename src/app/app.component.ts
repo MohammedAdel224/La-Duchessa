@@ -13,5 +13,5 @@ import { UserService } from './Services/user.service';
 })
 export class AppComponent {
   constructor(private userService: UserService) {}
-  title = 'Restaurant';
+  title = 'La Duchessa';
 }

@@ -8,7 +8,7 @@ import { User } from '../model/user.model';
 export class CommonVariablesService {
   constructor() {}
 
-  private brandName = new BehaviorSubject<string>('Café Delight');
+  private brandName = new BehaviorSubject<string>('La Duchessa');
   brandName$ = this.brandName.asObservable();
 
   private user = new BehaviorSubject<User>({
