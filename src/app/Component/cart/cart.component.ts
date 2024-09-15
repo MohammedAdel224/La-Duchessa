@@ -98,7 +98,7 @@ export class CartComponent implements OnInit {
       next: ()=>{
         this.cart = [];
         this.user.cart = [];
-        this.cartService.updateCart(this.user.id, { cart: [] });
+        this.cartService.updateCart(this.user.id, { cart: [] }).subscribe();
       }
     })
   }
