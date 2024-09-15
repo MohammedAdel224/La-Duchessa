@@ -103,22 +103,16 @@
       "address": "Somewhere St.",
       "cart": [
         {
-          "category": "Lunch",
-          "id": "2",
-          "name": "meal ",
-          "title": "meal meat",
-          "image": "/Products/2.jpeg",
-          "price": 39.99,
-          "details": "meat meal."
+          "id": "1",
+          "name": "adding",
+          "price": 29.99,
+          "quantity": 5
         },
         {
-          "category": "Lunch",
           "id": "3",
           "name": "meal meat with rice",
-          "title": "meat",
-          "image": "/Products/3.jpeg",
           "price": 49.99,
-          "details": "  meat with rice."
+          "quantity": 2
         }
       ],
       "order": []
@@ -228,5 +222,27 @@
       "order": []
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "1692",
+      "userId": "user-mohammed-adel",
+      "datetime": "September 15, 2024 11:43:12 AM",
+      "products": [
+        {
+          "id": "1",
+          "name": "adding",
+          "price": 29.99,
+          "quantity": 5
+        },
+        {
+          "id": "3",
+          "name": "meal meat with rice",
+          "price": 49.99,
+          "quantity": 2
+        }
+      ],
+      "total": 249.93,
+      "status": "Pending"
+    }
+  ]
 }
