@@ -1,35 +1,38 @@
-<!-- src/app/components/cart/cart.component.html -->
-<h2 class="cart-title">Shopping Cart</h2>
-
-<div class="cart-actions">
-  <button (click)="vieworders()" class="btn btn-primary">View My Orders</button>
-  <button (click)="goBack()" class="btn btn-secondary">Back to Products</button>
-</div>
-
-<div *ngIf="user.cart.length === 0" class="empty-cart-message">
-  Your cart is empty.
-</div>
-
-<ul *ngIf="user.cart.length > 0" class="cart-items-list">
-  <li *ngFor="let item of user.cart" class="cart-item">
-    <!-- <img [src]="item.image" alt="{{ item.title }}" class="cart-item-image" /> -->
-    <div class="cart-item-details">
-      <h3 class="cart-item-title">{{ item.name }}</h3>
-      <p class="cart-item-description">{{ item.quantity }}</p>
-      <p class="cart-item-price">{{ item.price | currency }}</p>
-
-      <div class="cart-item-actions">
-        <!-- <button (click)="deletefromcart(item)" class="btn btn-danger">
-          Delete
-        </button> -->
-        <button (click)="makeorder(item)" class="btn btn-success">
-          Make Order
-        </button>
+<div class="main">
+  <div class="container">
+    <h1 class="text-center lh-lg">My Cart</h1>
+    @if(cart.length === 0)
+    {
+      <div class="empty-cart-message">
+        Your cart is empty.
       </div>
-    </div>
-  </li>
-</ul>
-
-<!-- <button (click)="addorder()" class="btn btn-primary order-all-button">
-  Order All Cart
-</button> -->
+    }
+    @else
+    {
+      <div class="products-list container d-flex flex-wrap justify-content-center pb-3">
+        @for(product of cart; track product.id)
+        {
+          <div class="card rounded text-center">
+            <div class="img-container p-3">
+              <img class="img-fluid rounded" [src]="product.image" alt="{{ product.name }}" />
+            </div>
+            <div class="p-3 pt-0 bg-white rounded mt-3">
+              <h3 class="m-2">{{ product.name }}</h3>
+              <div class="quantity">
+                <p class="d-inline-block me-3">Quantity: {{ product.quantity }}</p>
+                <button class="btn btn-outline-rose-taupe text-center p-0 me-1" (click)="decreaseQuantity(product.id)">-</button>
+                <button class="btn btn-outline-rose-taupe text-center p-0" (click)="increaseQuantity(product.id)">+</button>
+              </div>
+              <p>Unit Price: {{ product.price | currency }}</p>
+              <p>Total: {{ (product.price * product.quantity) | currency }}</p>
+              <button class="btn btn-rose-taupe form-control" (click)="removeFromCart(product.id)">Remove From Cart</button>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="text-center">
+        <button class="btn btn-rose-taupe" (click)="makeOrder()">Make Order</button>
+      </div>
+    }
+  </div>
+</div>

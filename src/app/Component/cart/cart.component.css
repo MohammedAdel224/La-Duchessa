@@ -1,42 +1,44 @@
 /* src/app/components/cart/cart.component.css */
-.cart-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #874f4f; /* Color for the title */
+h1 {
+  color: var(--color-10);
+  font-weight: bold;
 }
 
-.cart-actions {
-  margin-bottom: 20px;
+.products-list{ gap: 1rem; }
+
+.card {
+  border: 2px solid var(--color-7);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
-.btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-.btn-primary {
-  background-color: #874f4f; /* Primary button color */
+.img-container { background-color: var(--color-7);}
+
+.card img{
+  height: 150px;
 }
 
-.btn-secondary {
-  background-color: #6c757d; /* Secondary button color */
+.card h3 {
+  color: var(--color-7);
+  font-size: 1.1rem;
 }
 
-.btn-danger {
-  background-color: #dc3545; /* Danger button color */
-}
+.card p { color: #333; }
 
-.btn-success {
-  background-color: #28a745; /* Success button color */
+.quantity button{
+  display: inline-block;
+  width: 1.5rem;
 }
-
-.order-all-button {
-  margin-top: 20px;
-  background-color: #874f4f; /* Order all button color */
+.cart-actions {
+  margin-bottom: 20px;
 }
 
 .empty-cart-message {
@@ -44,50 +46,6 @@
   color: #6c757d; /* Color for the empty cart message */
 }
 
-.cart-items-list {
-  list-style: none;
-  padding: 0;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.cart-item-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 15px;
-}
-
-.cart-item-details {
-  flex: 1;
-}
-
-.cart-item-title {
-  font-size: 18px;
-  margin: 0;
-  color: #874f4f; /* Color for item title */
-}
-
-.cart-item-description {
-  margin: 5px 0;
-  color: #555; /* Color for item description */
-}
-
-.cart-item-price {
-  margin: 5px 0;
-  font-weight: bold;
-  color: #874f4f; /* Color for item price */
-}
-
 .cart-item-actions {
   margin-top: 10px;
-}
-
-.cart-item-actions .btn {
-  margin-right: 10px;
 }
