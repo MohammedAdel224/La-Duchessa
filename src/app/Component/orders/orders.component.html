@@ -47,15 +47,15 @@
       {
         <div class="order list-group-item list-group-item-action">
           <div class="row order-header" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+order.id">
-            <div class="offset-1 col-2">
+            <div class="offset-lg-1 col-lg-2 d-none d-lg-block">
               <img class="img-fluid rounded" [src]="order.user.profilePicture">
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-5">
               <p class="fw-bold text-center">{{order.user.userName}}</p>
               <p class="fw-bold text-center">Address</p>
               <p class="text-center">{{order.user.address}}</p>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-7 text-center text-sm-start">
               <p><span class="font-weight-bold">Order ID: </span>{{order.id}}</p>
               <p><span class="font-weight-bold">Order Date: </span><br/>{{order.datetime}}</p>
               <p><span class="font-weight-bold">Status: </span>
@@ -66,15 +66,15 @@
               </p>
               @if(order.status == "Pending")
               {
-                <div class="btns">
+                <div class="btns mb-3 mb-md-0">
                   <button class="btn btn-success mr-1" (click)="changeStatus($event, order.id, 'Accepted')">Accept</button>
                   <button class="btn btn-danger" (click)="changeStatus($event, order.id, 'Rejected')">Reject</button>
                 </div>
               }
             </div>
-            <div class="col-3">
-              <p>Total</p>
-              <p class="h1 fw-bold">${{order.total}}</p>
+            <div class="col-lg-3 col-md-4 col-sm-7 offset-sm-5 offset-md-0 text-center text-sm-start">
+              <p class="h1-md h3 d-inline d-md-block">Total: </p>
+              <p class="h1-md h3 fw-bold d-inline d-md-block">${{order.total}}</p>
             </div>
           </div>
           <div [id]="'collapse'+order.id" class="collapse">
