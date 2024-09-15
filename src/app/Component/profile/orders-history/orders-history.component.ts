@@ -36,6 +36,7 @@ export class OrdersHistoryComponent {
     this.ordersService.GetOreders(this.user.id).subscribe({
       next: (orders: Order[]) => {
         this.orders = orders;
+        this.orders.sort((a: Order, b: Order)=> {return (new Date(b.datetime!)).getTime() - (new Date(a.datetime!)).getTime()})
       },
     });
   }

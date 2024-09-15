@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../Services/order.service';
 import { FormsModule } from '@angular/forms';
+import { Order } from '../../model/order.model';
 
 @Component({
   selector: 'app-orders',
@@ -26,6 +27,8 @@ export class OrdersComponent implements OnInit {
       next: (orders: any[]) => {
         this.orders = orders;
         this.filteredOrders = orders;
+        this.orders.sort((a: any, b: any)=> {return (new Date(b.datetime!)).getTime() - (new Date(a.datetime!)).getTime()})
+        this.filteredOrders.sort((a: any, b: any)=> {return (new Date(b.datetime!)).getTime() - (new Date(a.datetime!)).getTime()})
       },
     });
   }
