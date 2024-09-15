@@ -32,6 +32,7 @@
       </div>
       <div class="text-center mt-3 mb-3">
         <button class="btn btn-rose-taupe" (click)="makeOrder()">Buy</button>
+        <p class="h2 mt-2">Total: {{caluculateTotal() | currency}}</p>
       </div>
     }
   </div>

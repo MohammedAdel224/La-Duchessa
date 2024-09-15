@@ -82,16 +82,20 @@ export class CartComponent implements OnInit {
     return this.datePipe.transform(date, 'MMMM dd, yyyy hh:mm:ss a')
   }
 
-  makeOrder() {
+  caluculateTotal(){
     let total = 0;
     for(let product of this.user.cart){
       total += product.quantity * product.price;
     }
+    return total;
+  }
+
+  makeOrder() {
     const order: Order = {
       userId: this.user.id,
       datetime: this.getFormatedDate(new Date()),
       products: this.user.cart,
-      total: total,
+      total: this.caluculateTotal(),
       status: "Pending"
     }
     this.orderService.AddOrders(order).subscribe({
